@@ -1,0 +1,1562 @@
+basePath: /
+definitions:
+  model.GroupMPT:
+    properties:
+      group_number:
+        type: string
+      id:
+        type: integer
+    required:
+    - group_number
+    type: object
+  model.GroupMarlo:
+    properties:
+      group_number:
+        type: string
+      id:
+        type: integer
+    type: object
+  model.Logs:
+    properties:
+      action:
+        description: User   User      `json:"user" gorm:"foreignKey:UserId;references:ID"`
+        type: string
+      date:
+        type: string
+      id:
+        type: integer
+      user_id:
+        type: integer
+    required:
+    - action
+    - date
+    - user_id
+    type: object
+  model.PracticeConfig:
+    properties:
+      group_marlo_id:
+        type: integer
+      group_mpt_id:
+        type: integer
+      id:
+        type: integer
+      practice_id:
+        type: integer
+      student_id:
+        type: integer
+      supervisor_id:
+        type: integer
+    required:
+    - group_marlo_id
+    - group_mpt_id
+    - id
+    - practice_id
+    - student_id
+    - supervisor_id
+    type: object
+  model.PracticeDays:
+    properties:
+      day:
+        type: string
+      id:
+        type: integer
+    required:
+    - day
+    type: object
+  model.PracticeShedule:
+    properties:
+      day:
+        type: integer
+      id:
+        type: integer
+      practice_config_id:
+        type: integer
+    type: object
+  model.Practices:
+    properties:
+      end:
+        type: string
+      id:
+        type: integer
+      practice_name:
+        type: string
+      start:
+        type: string
+    required:
+    - end
+    - practice_name
+    - start
+    type: object
+  model.ResponseUser:
+    properties:
+      id:
+        type: integer
+      message:
+        type: string
+    type: object
+  model.ResponseUserCreateGroupMPT:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.GroupMPT'
+    type: object
+  model.ResponseUserCreateGroupMPTArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.GroupMPT'
+        type: array
+    type: object
+  model.ResponseUserCreateGroupMarlo:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.GroupMarlo'
+    type: object
+  model.ResponseUserCreateGroupMarloArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.GroupMarlo'
+        type: array
+    type: object
+  model.ResponseUserCreateLogs:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.Logs'
+    type: object
+  model.ResponseUserCreateLogsArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.Logs'
+        type: array
+    type: object
+  model.ResponseUserCreatePractice:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.Practices'
+    type: object
+  model.ResponseUserCreatePracticeArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.Practices'
+        type: array
+    type: object
+  model.ResponseUserCreatePracticeConfig:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.PracticeConfig'
+    type: object
+  model.ResponseUserCreatePracticeConfigArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.PracticeConfig'
+        type: array
+    type: object
+  model.ResponseUserCreatePracticedays:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.PracticeDays'
+    type: object
+  model.ResponseUserCreatePracticedaysArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.PracticeDays'
+        type: array
+    type: object
+  model.ResponseUserCreateStatus:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.Status'
+    type: object
+  model.ResponseUserCreateStatusArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.Status'
+        type: array
+    type: object
+  model.ResponseUserCreateUser:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.User'
+    type: object
+  model.ResponseUserCreateUserArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data_arr:
+        items:
+          $ref: '#/definitions/model.User'
+        type: array
+    type: object
+  model.ResponseUserCreatepracticeShedule:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        $ref: '#/definitions/model.PracticeShedule'
+    type: object
+  model.ResponseUserCreatepracticeSheduleArr:
+    properties:
+      answer:
+        $ref: '#/definitions/model.ResponseUser'
+      data:
+        items:
+          $ref: '#/definitions/model.PracticeShedule'
+        type: array
+    type: object
+  model.Status:
+    properties:
+      id:
+        type: integer
+      status_name:
+        type: string
+    required:
+    - status_name
+    type: object
+  model.User:
+    properties:
+      can_enter:
+        type: boolean
+      date_of_birth:
+        type: string
+      discord:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      keycloack_id:
+        type: string
+      name:
+        type: string
+      patronymic:
+        type: string
+      status_id:
+        type: integer
+      surname:
+        type: string
+      telegram:
+        type: string
+    required:
+    - can_enter
+    - date_of_birth
+    - discord
+    - email
+    - keycloack_id
+    - name
+    - patronymic
+    - status_id
+    - surname
+    - telegram
+    type: object
+host: localhost:8081
+info:
+  contact: {}
+  description: This is a sample MarloService API.
+  title: MarloService API
+  version: "1.0"
+paths:
+  /get_auth:
+    get:
+      consumes:
+      - application/json
+      - application/json
+      description: Update short link
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.GroupMPT'
+            type: array
+        "503":
+          description: Технический перерыв
+          schema:
+            $ref: '#/definitions/model.GroupMarlo'
+      security:
+      - Bearer: []
+      summary: ShortLink
+      tags:
+      - ShortLink
+  /groupmarlo:
+    post:
+      consumes:
+      - application/json
+      description: Create a GroupMarlo record
+      parameters:
+      - description: GroupMarlo object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.GroupMarlo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+      security:
+      - Bearer: []
+      tags:
+      - GroupMarlo
+  /groupmarlo/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Reade a GroupMarlo record
+      parameters:
+      - description: GroupMarlo object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.GroupMarlo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+      security:
+      - Bearer: []
+      summary: DELETE a GroupMarlo
+      tags:
+      - GroupMarlo
+    get:
+      consumes:
+      - application/json
+      description: Reade a GroupMarlo record
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+      security:
+      - Bearer: []
+      summary: Reade a GroupMarlo
+      tags:
+      - GroupMarlo
+    put:
+      consumes:
+      - application/json
+      description: Update a GroupMarlo record
+      parameters:
+      - description: GroupMarlo object that needs to be Updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.GroupMarlo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMarlo'
+      security:
+      - Bearer: []
+      summary: UPDATE a GroupMarlo
+      tags:
+      - GroupMarlo
+  /groupmarlo_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading a GroupMarlo all items
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMarloArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMarloArr'
+      security:
+      - Bearer: []
+      summary: Read All GroupMPT records
+      tags:
+      - GroupMarlo
+  /groupmpt:
+    post:
+      consumes:
+      - application/json
+      description: create item of mpt group
+      parameters:
+      - description: GroupMPT object that needs to be found
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.GroupMPT'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+      security:
+      - Bearer: []
+      summary: Create group mpt
+      tags:
+      - GroupMPT
+  /groupmpt/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a GroupMPT record
+      parameters:
+      - description: GroupMPT object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.GroupMPT'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+      security:
+      - Bearer: []
+      summary: Delete a GroupMPT
+      tags:
+      - GroupMPT
+    get:
+      consumes:
+      - application/json
+      description: Reading a GroupMPT item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+      security:
+      - Bearer: []
+      summary: Read a GroupMPT by id
+      tags:
+      - GroupMPT
+    put:
+      consumes:
+      - application/json
+      description: Create a new GroupMPT record
+      parameters:
+      - description: GroupMPT object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.GroupMPT'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMPT'
+      security:
+      - Bearer: []
+      summary: update a GroupMPT
+      tags:
+      - GroupMPT
+  /groupmpt_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading a GroupMPT items
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateGroupMPTArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateGroupMPTArr'
+      security:
+      - Bearer: []
+      summary: Read All GroupMPT records
+      tags:
+      - GroupMPT
+  /logs:
+    post:
+      consumes:
+      - application/json
+      description: Create a new log entry record
+      parameters:
+      - description: Logs object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Logs'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateLogs'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateLogs'
+      security:
+      - Bearer: []
+      summary: Create a new log entry
+      tags:
+      - Logs
+  /logs/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a log entry record
+      parameters:
+      - description: Logs object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Logs'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateLogs'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateLogs'
+      security:
+      - Bearer: []
+      summary: Delete a log entry
+      tags:
+      - Logs
+    get:
+      consumes:
+      - application/json
+      description: Reading a log entry item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateLogs'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateLogs'
+      security:
+      - Bearer: []
+      summary: Read a log entry by id
+      tags:
+      - Logs
+    put:
+      consumes:
+      - application/json
+      description: Update a log entry record
+      parameters:
+      - description: Logs object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Logs'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateLogs'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateLogs'
+      security:
+      - Bearer: []
+      summary: Update a log entry
+      tags:
+      - Logs
+  /practice:
+    post:
+      consumes:
+      - application/json
+      description: Create a new practice record
+      parameters:
+      - description: Practice object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Practices'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePractice'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePractice'
+      security:
+      - Bearer: []
+      summary: Create a new practice
+      tags:
+      - Practices
+  /practice/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a practice record
+      parameters:
+      - description: Practice object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Practices'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePractice'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePractice'
+      security:
+      - Bearer: []
+      summary: Delete a practice
+      tags:
+      - Practices
+    get:
+      consumes:
+      - application/json
+      description: Reading a practice item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePractice'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePractice'
+      security:
+      - Bearer: []
+      summary: Read a practice by id
+      tags:
+      - Practices
+    put:
+      consumes:
+      - application/json
+      description: Update a practice record
+      parameters:
+      - description: Practice object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Practices'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePractice'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePractice'
+      security:
+      - Bearer: []
+      summary: Update a practice
+      tags:
+      - Practices
+  /practice_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading all practices
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticeArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticeArr'
+      security:
+      - Bearer: []
+      summary: Read all practices
+      tags:
+      - Practices
+  /practiceconfig:
+    post:
+      consumes:
+      - application/json
+      description: Create a new practice configuration record
+      parameters:
+      - description: PracticeConfig object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeConfig'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+      security:
+      - Bearer: []
+      summary: Create a new practice configuration
+      tags:
+      - PracticeConfig
+  /practiceconfig/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a practice configuration record
+      parameters:
+      - description: PracticeConfig object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeConfig'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+      security:
+      - Bearer: []
+      summary: Delete a practice configuration
+      tags:
+      - PracticeConfig
+    get:
+      consumes:
+      - application/json
+      description: Reading a practice configuration item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+      security:
+      - Bearer: []
+      summary: Read a practice configuration by id
+      tags:
+      - PracticeConfig
+    put:
+      consumes:
+      - application/json
+      description: Update a practice configuration record
+      parameters:
+      - description: PracticeConfig object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeConfig'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticeConfig'
+      security:
+      - Bearer: []
+      summary: Update a practice configuration
+      tags:
+      - PracticeConfig
+  /practiceconfig_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading all practices configs
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticeConfigArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticeConfigArr'
+      security:
+      - Bearer: []
+      summary: Read all practices configs
+      tags:
+      - PracticeConfig
+  /practiceday:
+    post:
+      consumes:
+      - application/json
+      description: Create a new practice day record
+      parameters:
+      - description: PracticeDay object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeDays'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+      security:
+      - Bearer: []
+      summary: Create a new practice day
+      tags:
+      - PracticeDays
+  /practiceday/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a practice day record
+      parameters:
+      - description: PracticeDay object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeDays'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+      security:
+      - Bearer: []
+      summary: Delete a practice day
+      tags:
+      - PracticeDays
+    get:
+      consumes:
+      - application/json
+      description: Reading a practice day item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+      security:
+      - Bearer: []
+      summary: Read a practice day by id
+      tags:
+      - PracticeDays
+    put:
+      consumes:
+      - application/json
+      description: Update a practice day record
+      parameters:
+      - description: PracticeDay object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeDays'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticedays'
+      security:
+      - Bearer: []
+      summary: Update a practice day
+      tags:
+      - PracticeDays
+  /practiceday_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading all practices days
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatePracticedaysArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatePracticedaysArr'
+      security:
+      - Bearer: []
+      summary: Read all practices days
+      tags:
+      - PracticeDays
+  /practiceschedule:
+    post:
+      consumes:
+      - application/json
+      description: Create a new practice schedule record
+      parameters:
+      - description: PracticeShedule object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeShedule'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+      security:
+      - Bearer: []
+      summary: Create a new practice schedule
+      tags:
+      - PracticeShedule
+  /practiceschedule/:{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a practice schedule record
+      parameters:
+      - description: PracticeShedule object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeShedule'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+      security:
+      - Bearer: []
+      summary: Delete a practice schedule
+      tags:
+      - PracticeShedule
+  /practiceschedule/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Reading a practice schedule item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+      security:
+      - Bearer: []
+      summary: Read a practice schedule by id
+      tags:
+      - PracticeShedule
+    put:
+      consumes:
+      - application/json
+      description: Update a practice schedule record
+      parameters:
+      - description: PracticeShedule object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.PracticeShedule'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatepracticeShedule'
+      security:
+      - Bearer: []
+      summary: Update a practice schedule
+      tags:
+      - PracticeShedule
+  /practiceschedule_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading all practice shedule
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreatepracticeSheduleArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreatepracticeSheduleArr'
+      security:
+      - Bearer: []
+      summary: Read all practice shedule
+      tags:
+      - PracticeShedule
+  /status:
+    post:
+      consumes:
+      - application/json
+      description: Create a new status record
+      parameters:
+      - description: Status object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Status'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateStatus'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateStatus'
+      security:
+      - Bearer: []
+      summary: Create a new status
+      tags:
+      - Status
+  /status/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a status record
+      parameters:
+      - description: Status object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Status'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateStatus'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateStatus'
+      security:
+      - Bearer: []
+      summary: Delete a status
+      tags:
+      - Status
+    get:
+      consumes:
+      - application/json
+      description: Reading a status item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateStatus'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateStatus'
+      security:
+      - Bearer: []
+      summary: Read a status by id
+      tags:
+      - Status
+    put:
+      consumes:
+      - application/json
+      description: Update a status record
+      parameters:
+      - description: Status object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.Status'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateStatus'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateStatus'
+      security:
+      - Bearer: []
+      summary: Update a status
+      tags:
+      - Status
+  /status_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading all logs
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateLogsArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateLogsArr'
+      security:
+      - Bearer: []
+      summary: Read all Logs
+      tags:
+      - Logs
+  /user:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user record
+      parameters:
+      - description: User object that needs to be created
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateUser'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateUser'
+      security:
+      - Bearer: []
+      summary: Create a new user
+      tags:
+      - User
+  /user/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user record
+      parameters:
+      - description: User object that needs to be deleted
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateUser'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateUser'
+      security:
+      - Bearer: []
+      summary: Delete a user
+      tags:
+      - User
+    get:
+      consumes:
+      - application/json
+      description: Reading a user item by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateUser'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateUser'
+      security:
+      - Bearer: []
+      summary: Read a user by id
+      tags:
+      - User
+    put:
+      consumes:
+      - application/json
+      description: Update a user record
+      parameters:
+      - description: User object that needs to be updated
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateUser'
+            type: array
+        "503":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateUser'
+      security:
+      - Bearer: []
+      summary: Update a user
+      tags:
+      - User
+  /user_all:
+    get:
+      consumes:
+      - application/json
+      description: Reading all users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ResponseUserCreateUserArr'
+            type: array
+        "500":
+          description: Технические шоколадки
+          schema:
+            $ref: '#/definitions/model.ResponseUserCreateUserArr'
+      security:
+      - Bearer: []
+      summary: Read all users
+      tags:
+      - User
+securityDefinitions:
+  Bearer:
+    description: '"Bearer" токен от keycloak в header "Authorization". При вставке
+      из flow, дописывать слово - Bearer'
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
